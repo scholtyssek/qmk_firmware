@@ -59,7 +59,14 @@ void keyboard_post_init_kb(void) {
     keyboard_post_init_user();
 }
 
+bool firstRun = true;
 bool keychron_task_kb(void) {
+    if (firstRun) {
+        firstRun = false;
+        rgblight_sethsv(100, 100, 100); // set the color
+        rgblight_mode_noeeprom(1);      // 1 is static. see: rgblight.h
+    }
+
     if (power_on_indicator_timer) {
         if (timer_elapsed32(power_on_indicator_timer) > POWER_ON_LED_DURATION) {
             power_on_indicator_timer = 0;
@@ -88,3 +95,12 @@ bool lpm_is_kb_idle(void) {
     return power_on_indicator_timer == 0 && !factory_reset_indicating();
 }
 #endif
+
+void keyboard_post_init_user(void) {
+    // rgblight_show_solid_color(100, 100, 100);
+    // rgblight_sethsv(100, 100, 100);
+    // rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
+    // rgblight_toggle();
+    // rgblight_mode(16);
+    rgblight_mode_noeeprom(1); // 1 is static. see: rgblight.h
+}
