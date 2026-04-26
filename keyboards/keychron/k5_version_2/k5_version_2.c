@@ -63,7 +63,10 @@ bool firstRun = true;
 bool keychron_task_kb(void) {
     if (firstRun) {
         firstRun = false;
-        rgblight_sethsv(100, 100, 100); // set the color
+        rgblight_sethsv(HSV_AZURE); // set the color
+        // rgblight_sethsv(HSV_CHARTREUSE); // set the color
+        // rgblight_sethsv(HSV_MAGENTA); // set the color
+        // rgblight_sethsv(100, 100, 100); // set the color
         rgblight_mode_noeeprom(1);      // 1 is static. see: rgblight.h
     }
 
@@ -96,6 +99,7 @@ bool lpm_is_kb_idle(void) {
 }
 #endif
 
+// extern void backlight_set(uint8_t);
 void keyboard_post_init_user(void) {
     // rgblight_show_solid_color(100, 100, 100);
     // rgblight_sethsv(100, 100, 100);
@@ -103,4 +107,8 @@ void keyboard_post_init_user(void) {
     // rgblight_toggle();
     // rgblight_mode(16);
     rgblight_mode_noeeprom(1); // 1 is static. see: rgblight.h
+
+
+    // backlight_set(31);  // MAX backlight
+    // backlight_set(backlight_config.level);
 }
