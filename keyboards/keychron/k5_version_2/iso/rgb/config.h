@@ -16,6 +16,10 @@
 
 #pragma once
 
+#define TAPPING_TERM 250
+#define TAPPING_TERM_PER_KEY
+#define PERMISSIVE_HOLD
+
 #ifdef RGB_MATRIX_ENABLE
 /* RGB Matrix driver configuration */
 #    define RGB_MATRIX_LED_COUNT 109
